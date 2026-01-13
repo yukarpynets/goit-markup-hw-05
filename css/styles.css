@@ -1,3 +1,4 @@
+
 :root {
     --iris: #4d5ae5;
     --ocean: #404bbf;
@@ -9,7 +10,9 @@
     --white: #ffffff;
     --green: #31D0AA;
     --NAVY-BLUE-modal: rgba(46, 47, 66, 0.40);
-    --DAIRY:#FCFCFC;
+    --DAIRY: #FCFCFC;
+
+    --backdrop: rgba(46, 47, 66, 0.4);
 
 
 
@@ -419,7 +422,7 @@ body:has(.backdrop.is-open) {
 .portfolio-card:hover {
     cursor: pointer;
     background: var(--WHITE, #FFF);
-  
+
 }
 
 .portfolio-name {
@@ -490,15 +493,16 @@ body:has(.backdrop.is-open) {
     fill: var(--cloud);
 }
 
-.footer-label{
+.footer-label {
     font-weight: 500;
-        font-size: 16px;
-        line-height: 1.5;
-        letter-spacing: 0.02em;
-        color: var(--white);
-        margin-bottom: 16px;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin-bottom: 16px;
 }
-.footer-form{
+
+.footer-form {
     display: flex;
     flex-wrap: wrap;
     width: 453px;
@@ -507,7 +511,7 @@ body:has(.backdrop.is-open) {
 
 /* MODAL WINDOW */
 
-.backdrop{
+.backdrop {
     position: fixed;
     top: 0;
     left: 0;
@@ -517,23 +521,25 @@ body:has(.backdrop.is-open) {
     background-color: var(--NAVY-BLUE-modal);
     backdrop-filter: blur(5px);
 
-    transition: opacity 150ms ease-in, visibility 150ms ease-in;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+            visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
 }
+
 .backdrop.is-open {
     opacity: 1;
     visibility: visible;
     pointer-events: initial;
 }
 
-.modal{
+.modal {
     display: flex;
     flex-direction: column;
     position: absolute;
-  
+
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
@@ -541,8 +547,14 @@ body:has(.backdrop.is-open) {
     min-height: 584px;
     padding: 72px 24px 24px;
     border-radius: 4px;
-    background: var(--DAIRY );
+    background: #fcfcfc;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14),
+            0 1px 3px 0 rgba(0, 0, 0, 0.12),
+            0 2px 1px 0 rgba(0, 0, 0, 0.2);
+    
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .modal-btn {
     position: absolute;
     top: 24px;
@@ -555,26 +567,28 @@ body:has(.backdrop.is-open) {
     align-items: center;
     justify-content: center;
 
-    background-color:var(--cornflower);
+    background-color: var(--cornflower);
     border: 1px solid rgba(0, 0, 0, 0.10);
     border-radius: 100%;
-   
-    
 
-    
+
+
+
     transition: var(--trns-fast);
     transition-property: color;
 }
 
 .modal-btn:hover,
 .modal-btn:focus {
-   background-color: var(--iris);
-  
+    background-color: var(--iris);
+
+}
+.backdrop:not(.is-open) .modal {
+    transform: translate(-50%, -100%) scale(1.5);
 }
 
+.modal-btn-accent {
 
-.modal-btn-accent{
-    
     display: flex;
     width: 169px;
     padding: 16px 32px;
@@ -586,22 +600,22 @@ body:has(.backdrop.is-open) {
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
     margin: 0 auto;
 }
+
 .modal-btn-accent:active,
-.modal-btn-accent:hover{
+.modal-btn-accent:hover {
     background: var(--OCEAN, #404BBF);
-       
+
 }
 
-.modal-btn-icon{
- fill: #2E2F42;
+.modal-btn-icon {
+    fill: #2E2F42;
 }
 
 .modal-btn-icon:hover {
     fill: #ffffff;
 }
-.modal-caption{
 
-}
+.modal-caption {}
 
 /* FORM */
 
@@ -615,7 +629,7 @@ body:has(.backdrop.is-open) {
 
 .modal-form-wrapper {
     margin-bottom: 18px;
-    
+
 }
 
 .modal-form-wrapper:last-of-type {
@@ -693,79 +707,11 @@ body:has(.backdrop.is-open) {
 .modal-form-control .modal-form-field:active,
 .modal-form-control .modal-form-field:focus {
     border-color: var(--iris);
-}
+} 
 
 
-/* .modal-form-field:user-invalid+.modal-form-icon {
-    stroke: #e74a3b;
-}
-
-.modal-form-field:user-valid+.modal-form-icon {
-    stroke: #3be75d;
-} */
 
 
-.modal-form-comment {
-    width: 100%;
-    height: 137px;
-    padding: 22px 24px;
-    font-size: 18px;
-    letter-spacing: -0.02em;
-    border: 1.5px solid rgba(17, 17, 17, 0.05);
-    border-radius: 4px;
-    outline: none;
-    resize: none;
-    transition: var(--trns-fast);
-    transition-property: border-color;
-}
 
-.modal-form-comment:focus {
-    border-color: var(--iris);
-}
 
-.modal-form-comment::placeholder {
-    color: rgba(64, 64, 64, 0.3);
-}
-
-.modal-form-agreement {
-    font-size: 14px;
-    letter-spacing: -0.02em;
-    color: rgba(64, 64, 64, 0.6);
-}
-
-.modal-form-agreement-checkbox {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 20px;
-    height: 20px;
-    margin-right: 12px;
-    border-radius: 6px;
-    border: 1px solid rgba(17, 17, 17, 0.14);
-    cursor: pointer;
-    transition: var(--trns-fast);
-}
-
-.modal-form-agreement-checkbox:hover {
-    box-shadow: 0 0 0 4px rgb(253 146 34 / 25%);
-}
-
-.checkbox:checked+.modal-form-agreement .modal-form-agreement-checkbox {
-    background-color: var(--iris);
-    border-color: transparent;
-}
-
-.modal-form-agreement-icon {
-    fill: transparent;
-}
-
-.checkbox:checked+.modal-form-agreement .modal-form-agreement-icon {
-    fill: #fff;
-}
-
-.modal-form-agreement-link {
-    text-decoration: underline;
-    text-decoration-skip-ink: none;
-    color: var(--iris);
-}
 
